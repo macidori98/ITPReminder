@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "611331517100",
+    "firebase_url": "https://myitpreminder.firebaseio.com",
+    "project_id": "myitpreminder",
+    "storage_bucket": "myitpreminder.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:611331517100:android:daf92add57fcb023218d09",
+        "android_client_info": {
+          "package_name": "com.example.itpreminder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "611331517100-ehiaj30k3bso63viskl3gkuar4c7vn1k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.itpreminder",
+            "certificate_hash": "8c4adbadd7372e70acbeb9086c9134d9fce3995b"
+          }
+        },
+        {
+          "client_id": "611331517100-h1jmgn8b9uqdnb3opic62qdsn18st6i2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDxFKwLaLGGiblYRbXjPO5Ogx88XbS-IA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "611331517100-h1jmgn8b9uqdnb3opic62qdsn18st6i2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

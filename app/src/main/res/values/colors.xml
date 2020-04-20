@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<color name="colorPrimary">#06ADBF</color>
+    <color name="colorPrimaryDark">#06ADBF</color>
+    <color name="colorBackgroundBar">#06ADBF</color>
+    <color name="colorAccent">#A6654E</color>
+    <color name="colorText">#252526</color>
+    <color name="colorButton">#D9A679</color>
+    <color name="colorBackground">#C6C6CC</color>
+    <color name="colorSelected">#FFECDB</color>-->
+    <color name="colorPrimary">#2196F3</color>
+    <color name="colorPrimaryDark">#0069C0</color>
+    <color name="colorBackgroundBar">#2196F3</color>
+    <color name="colorAccent">#FF9A96</color>
+    <color name="colorGradientStart">#2196F3</color>
+    <color name="colorGradientEnd">#7DC4FF</color>
+    <color name="colorText">#303030</color>
+    <color name="colorButton">#FAFF63</color>
+    <color name="colorBackground">#E3E3E3</color>
+    <color name="colorSelected">#FAFF63</color>
+    <color name="colorSuccess">#1BC20E</color>
+    <color name="colorButtonNormalPressed">#AFB34F</color>
+    <color name="colorInformative">#FF8132</color>
+    <color name="colorFail">#D70000</color>
+    <color name="colorFailBackground">#ff593a</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorIcon">#303030</color>
+    <color name="colorOnDarkerBackground">#E3E3E3</color>
+
+</resources>

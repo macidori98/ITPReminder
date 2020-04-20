@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">ITPReminder</string>
+
+    <!--Login page-->
+    <string name="login_textView_login">HR Manager</string>
+    <string name="login_editText_email">Enter your username</string>
+    <string name="login_editText_password">Enter your password</string>
+    <string name="login_checkBox_remember_me">Remember me</string>
+    <string name="login_checkBox_auto_login">Auto login</string>
+    <string name="login_button_login">Login</string>
+    <string name="check_email_address">Check email address</string>
+    <string name="minimum_characters">You have to enter at least 6 characters</string>
+    <string name="login_check_remember_me">"You have to check remember me box too if you want to use auto login feature"</string>
+    <string name="name_fail">Name is too short</string>
+
+    <!--Fragment navigation-->
+    <string name="back_button_press">Please click BACK again to exit!</string>
+
+    <!--Car list elements-->
+    <string name="phone_number">Phone: </string>
+    <string name="car_type">Car type: </string>
+    <string name="itp_duration">ITP duration: </string>
+    <string name="plate_number">Plate number:</string>
+    <string name="date_added">Done date:</string>
+    <string name="expire_date">Expire date:</string>
+</resources>
