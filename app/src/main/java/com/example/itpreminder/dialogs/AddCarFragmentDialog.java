@@ -81,7 +81,7 @@ public class AddCarFragmentDialog extends AppCompatDialogFragment {
                 month = month + 1;
                 Log.d(TAG, "onDateSet: mm/dd/yyy: " + month + "/" + day + "/" + year);
 
-                String date = month + "-" + day + "-" + year;
+                String date = day + "-" + month + "-" + year;
                 tvDate.setText(date);
             }
         };
@@ -108,7 +108,7 @@ public class AddCarFragmentDialog extends AppCompatDialogFragment {
                 String itpDuration = etItpDuration.getText().toString();
                 String doneDate = tvDate.getText().toString();
 
-                SimpleDateFormat sdf = new SimpleDateFormat("d-mm-yyyy");
+                SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss ZZZZ yyyy");
                 Calendar c = Calendar.getInstance();
                 try {
                     c.setTime(sdf.parse(doneDate));

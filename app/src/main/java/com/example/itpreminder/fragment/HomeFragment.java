@@ -105,7 +105,7 @@ public class HomeFragment extends Fragment implements AddNewCarListener {
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
                 linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
                 rvLists.setLayoutManager(linearLayoutManager);
-                carAdapter = new CarAdapter(carList, getContext());
+                carAdapter = new CarAdapter(carList, getContext(), getActivity());
                 carAdapter.setOnClickListener(new OnItemClickListener() {
                     @Override
                     public void onItemClick(int position) {

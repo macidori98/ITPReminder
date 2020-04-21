@@ -139,7 +139,7 @@
                     android:layout_marginTop="@dimen/dp5"
                     android:layout_marginEnd="@dimen/dp5"
                     android:layout_marginBottom="@dimen/dp5"
-                    android:textColor="@color/colorOnDarkerBackground"
+                    android:textColor="@color/colorButton"
                     android:textSize="@dimen/sp20" />
             </LinearLayout>
 

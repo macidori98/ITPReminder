@@ -1,13 +1,20 @@
 package com.example.itpreminder.adapter;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.itpreminder.R;
@@ -20,17 +27,18 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.concurrent.CancellationException;
 
 public class CarAdapter extends RecyclerView.Adapter<CarAdapter.MyViewHolder> {
 
     private List<Car> carList;
     private Context context;
     private OnItemClickListener listener;
+    private Activity activity;
 
-    public CarAdapter(List<Car> carList, Context context) {
+    public CarAdapter(List<Car> carList, Context context, Activity activity) {
         this.carList = carList;
         this.context = context;
+        this.activity = activity;
     }
 
     @NonNull
@@ -49,20 +57,42 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.MyViewHolder> {
         holder.tvDuration.setText(String.valueOf(carList.get(position).getItpPeriod()));
         holder.tvPlateNumber.setText(carList.get(position).getPlateNumber());
 
+        final String number = holder.tvPhone.getText().toString();
+
+        holder.tvPhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (ContextCompat.checkSelfPermission(activity,
+                        Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(activity,
+                            new String[]{Manifest.permission.CALL_PHONE}, 1);
+                } else {
+                    Intent intent = new Intent(Intent.ACTION_CALL);
+                    intent.setData(Uri.parse(Constant.TEL.concat(number)));
+                    context.startActivity(intent);
+                }
+            }
+        });
+
         Date today = Calendar.getInstance().getTime();
-        Date dateUntil = new Date();
+
+
+
+        Date dateEnd = null ;
         try {
-            dateUntil = new SimpleDateFormat(Constant.DATE_PATTERN)
+
+            dateEnd = new SimpleDateFormat("EEE MMM dd HH:mm:ss ZZZZ yyyy")
                     .parse(carList.get(position).getExpireDate());
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
-        if (today.compareTo(dateUntil) > 0){
+        if (today.compareTo(dateEnd) > 0){
             holder.tvExpireDate.setTextColor(Color.RED);
         }
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
 
-        holder.tvExpireDate.setText(carList.get(position).getExpireDate());
+        holder.tvExpireDate.setText(format.format(dateEnd));
     }
 
     @Override

@@ -1,5 +1,11 @@
 package com.example.itpreminder.utils;
 
+import android.Manifest;
+import android.content.Context;
+import android.content.pm.PackageManager;
+
+import androidx.core.app.ActivityCompat;
+
 import com.example.itpreminder.model.User;
 
 public class Constant {
@@ -13,6 +19,24 @@ public class Constant {
     public static final String AUTO_LOGIN = "auto_login";
     public static User CURRENT_USER;
     public static final String DATE_PATTERN = "d-mm-yyyy";
+    public static final String TEL = "tel:";
 
+    public static String[] PERMISSIONS = {
+            android.Manifest.permission.READ_CONTACTS,
+            android.Manifest.permission.WRITE_CONTACTS,
+            android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.CALL_PHONE
+    };
+
+    public static boolean hasPermissions(Context context, String... permissions) {
+        if (context != null && permissions != null) {
+            for (String permission : permissions) {
+                if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 
 }
