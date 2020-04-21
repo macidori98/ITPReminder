@@ -63,20 +63,20 @@ public class HomeFragment extends Fragment implements AddNewCarListener {
         });
     }
 
-    private void addCar(){
+    private void addCar() {
         AddCarFragmentDialog addCarFragmentDialog = new AddCarFragmentDialog();
         addCarFragmentDialog.setListener(this);
-        addCarFragmentDialog.show(getActivity().getSupportFragmentManager(),"ADD NEW CAR");
+        addCarFragmentDialog.show(getActivity().getSupportFragmentManager(), "ADD NEW CAR");
     }
 
-    private void getCars(){
+    private void getCars() {
         mRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 carList = new ArrayList<>();
-                for (DataSnapshot snapshot: dataSnapshot.getChildren()){
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     String addedById = snapshot.child("addedById").getValue().toString();
-                    if (addedById.equals(Constant.CURRENT_USER.getId())){
+                    if (addedById.equals(Constant.CURRENT_USER.getId())) {
                         String id = snapshot.child("id").getValue().toString();
                         String phoneNumber = snapshot.child("phoneNumber").getValue().toString();
                         String carType = snapshot.child("carType").getValue().toString();
@@ -85,11 +85,11 @@ public class HomeFragment extends Fragment implements AddNewCarListener {
                         String expireDate = snapshot.child("expireDate").getValue().toString();
                         int itpPeriod = Integer.valueOf(snapshot.child("itpPeriod").getValue().toString());
 
-                        Car car = new Car(id,phoneNumber,carType, plateNumber, doneDate, expireDate, itpPeriod, addedById);
+                        Car car = new Car(id, phoneNumber, carType, plateNumber, doneDate, expireDate, itpPeriod, addedById);
 
                         boolean found = false;
-                        for (Car c : carList){
-                            if (c.getId().equals(id)){
+                        for (Car c : carList) {
+                            if (c.getId().equals(id)) {
                                 found = true;
                                 break;
                             }
@@ -112,7 +112,7 @@ public class HomeFragment extends Fragment implements AddNewCarListener {
                         Toast.makeText(getContext(), String.valueOf(position), Toast.LENGTH_SHORT).show();
                     }
                 });
-                if (carList.size() > 0){
+                if (carList.size() > 0) {
                     tvNoCarAdded.setVisibility(View.GONE);
                 }
                 rvLists.setAdapter(carAdapter);
@@ -125,7 +125,7 @@ public class HomeFragment extends Fragment implements AddNewCarListener {
         });
     }
 
-    private void initializeElements(View view){
+    private void initializeElements(View view) {
         rvLists = view.findViewById(R.id.recyclerView_cars);
         mDatabase = FirebaseDatabase.getInstance();
         mRef = mDatabase.getReference(Constant.CARS);

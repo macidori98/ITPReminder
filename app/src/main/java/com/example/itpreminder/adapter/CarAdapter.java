@@ -45,7 +45,7 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.MyViewHolder> {
     @Override
     public CarAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.recyclerview_list_elements, parent,false);
+                .inflate(R.layout.recyclerview_list_elements, parent, false);
         return new MyViewHolder(view, listener);
     }
 
@@ -77,8 +77,7 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.MyViewHolder> {
         Date today = Calendar.getInstance().getTime();
 
 
-
-        Date dateEnd = null ;
+        Date dateEnd = null;
         try {
 
             dateEnd = new SimpleDateFormat("EEE MMM dd HH:mm:ss ZZZZ yyyy")
@@ -87,7 +86,7 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.MyViewHolder> {
             e.printStackTrace();
         }
 
-        if (today.compareTo(dateEnd) > 0){
+        if (today.compareTo(dateEnd) > 0) {
             holder.tvExpireDate.setTextColor(Color.RED);
         }
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
@@ -100,11 +99,15 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.MyViewHolder> {
         return carList.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public void setOnClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
+
+    public class MyViewHolder extends RecyclerView.ViewHolder {
 
         public TextView tvPlateNumber, tvDuration, tvCarType, tvPhone, tvDoneDate, tvExpireDate;
 
-        public MyViewHolder(@NonNull View itemView, final OnItemClickListener listener){
+        public MyViewHolder(@NonNull View itemView, final OnItemClickListener listener) {
             super(itemView);
             tvPlateNumber = itemView.findViewById(R.id.plate_number_edit);
             tvDuration = itemView.findViewById(R.id.itp_duration_edit);
@@ -115,18 +118,14 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.MyViewHolder> {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (listener != null){
+                    if (listener != null) {
                         int position = getAdapterPosition();
-                        if (position != RecyclerView.NO_POSITION){
+                        if (position != RecyclerView.NO_POSITION) {
                             listener.onItemClick(position);
                         }
                     }
                 }
             });
         }
-    }
-
-    public void setOnClickListener(OnItemClickListener listener) {
-        this.listener = listener;
     }
 }

@@ -1,10 +1,10 @@
 package com.example.itpreminder.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
 import android.os.Bundle;
 import android.view.Window;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.example.itpreminder.R;
 import com.example.itpreminder.fragment.LoginFragment;
@@ -24,8 +24,7 @@ public class MainActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).hide();
         setContentView(R.layout.activity_main);
 
-        if(!Constant.hasPermissions(this, PERMISSIONS))
-        {
+        if (!Constant.hasPermissions(this, PERMISSIONS)) {
             ActivityCompat.requestPermissions(this, PERMISSIONS, 1);
         }
 

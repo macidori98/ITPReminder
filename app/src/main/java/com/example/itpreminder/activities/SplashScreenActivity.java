@@ -10,8 +10,8 @@ import android.widget.ImageView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.itpreminder.utils.Constant;
 import com.example.itpreminder.R;
+import com.example.itpreminder.utils.Constant;
 
 
 public class SplashScreenActivity extends AppCompatActivity {

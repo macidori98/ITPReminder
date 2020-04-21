@@ -21,7 +21,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.example.itpreminder.R;
-import com.example.itpreminder.activities.MainActivity;
 import com.example.itpreminder.interfaces.AddNewCarListener;
 import com.example.itpreminder.model.Car;
 import com.example.itpreminder.utils.Constant;
@@ -30,7 +29,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.ParseException;
 import java.util.Calendar;
-import java.util.Date;
 
 public class AddCarFragmentDialog extends AppCompatDialogFragment {
     public static final String TAG = AddCarFragmentDialog.class.getSimpleName();
@@ -69,7 +67,7 @@ public class AddCarFragmentDialog extends AppCompatDialogFragment {
                         getContext(),
                         android.R.style.Theme_Holo_Light_Dialog_MinWidth,
                         mDateSetListener,
-                        year,month,day);
+                        year, month, day);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.show();
             }
@@ -85,11 +83,11 @@ public class AddCarFragmentDialog extends AppCompatDialogFragment {
                 tvDate.setText(date);
             }
         };
-        addNewCar(builder,view);
+        addNewCar(builder, view);
         return builder.create();
     }
 
-    private void addNewCar(AlertDialog.Builder builder, View view){
+    private void addNewCar(AlertDialog.Builder builder, View view) {
         builder.setView(view).setTitle("Add Car").setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -118,10 +116,8 @@ public class AddCarFragmentDialog extends AppCompatDialogFragment {
 
                 c.add(Calendar.YEAR, Integer.valueOf(itpDuration));
 
-                String text = sdf.format(c.getTime());
-
                 Car car = new Car(id, phoneNumber, carType, plateNumber, doneDate,
-                        sdf.format(c.getTime()),Integer.valueOf(itpDuration), Constant.CURRENT_USER.getId());
+                        sdf.format(c.getTime()), Integer.valueOf(itpDuration), Constant.CURRENT_USER.getId());
 
                 listener.addCar(car);
                 mRef.child(id).setValue(car);
@@ -132,16 +128,7 @@ public class AddCarFragmentDialog extends AppCompatDialogFragment {
         });
     }
 
-    private boolean isTextLengthOk(String string){
-        if (string.length() >= 1 ){
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-
-    public void setListener(AddNewCarListener listener){
+    public void setListener(AddNewCarListener listener) {
         this.listener = listener;
     }
 }

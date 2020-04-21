@@ -55,7 +55,7 @@ public class LoginFragment extends Fragment {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isTextLengthOk(etName.getText().toString())){
+                if (isTextLengthOk(etName.getText().toString())) {
                     saveDataSharedPreferences();
                     doesUserExists(etName.getText().toString());
                 } else {
@@ -65,24 +65,23 @@ public class LoginFragment extends Fragment {
         });
     }
 
-    private boolean isTextLengthOk(String string){
-        if (string.length() >= 3 ){
+    private boolean isTextLengthOk(String string) {
+        if (string.length() >= 3) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
 
-    private void doesUserExists(final String user){
+    private void doesUserExists(final String user) {
         mRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 boolean exists = false;
 
-                for (DataSnapshot snapshot: dataSnapshot.getChildren()){
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     String sName = Objects.requireNonNull(snapshot.child("name").getValue()).toString();
-                    if (sName.equals(user)){
+                    if (sName.equals(user)) {
                         exists = true;
                         String ID = Objects.requireNonNull(snapshot.child("id").getValue()).toString();
                         Constant.CURRENT_USER = new User(ID, etName.getText().toString());
@@ -91,8 +90,7 @@ public class LoginFragment extends Fragment {
                 }
 
 
-
-                if (exists){
+                if (exists) {
                     login();
                 } else {
                     String ID = mRef.push().getKey();
@@ -109,25 +107,25 @@ public class LoginFragment extends Fragment {
         });
     }
 
-    private void isRememberMeChecked(){
+    private void isRememberMeChecked() {
         SharedPreferences sharedPreferences = Objects.requireNonNull(getActivity()).getSharedPreferences(Constant.MY_LOGIN_DATA, MODE_PRIVATE);
-        if (sharedPreferences.getBoolean(Constant.REMEMBER_ME, false)){
+        if (sharedPreferences.getBoolean(Constant.REMEMBER_ME, false)) {
             etName.setText(sharedPreferences.getString(Constant.USERNAME, Constant.EMPTY_STRING));
             cbRememberMe.setChecked(true);
         }
     }
 
-    private void isAutoLoginChecked(){
+    private void isAutoLoginChecked() {
         SharedPreferences sharedPreferences = Objects.requireNonNull(getActivity()).getSharedPreferences(Constant.MY_LOGIN_DATA, MODE_PRIVATE);
-        if (sharedPreferences.getBoolean(Constant.AUTO_LOGIN, false)){
+        if (sharedPreferences.getBoolean(Constant.AUTO_LOGIN, false)) {
             cbAutoLogin.setChecked(true);
             doesUserExists(etName.getText().toString());
         }
     }
 
-    private void saveDataSharedPreferences(){
+    private void saveDataSharedPreferences() {
         SharedPreferences.Editor sharedPreferences = Objects.requireNonNull(getActivity()).getSharedPreferences(Constant.MY_LOGIN_DATA, MODE_PRIVATE).edit();
-        if (cbRememberMe.isChecked()){
+        if (cbRememberMe.isChecked()) {
             sharedPreferences.putString(Constant.USERNAME, etName.getText().toString());
             sharedPreferences.putBoolean(Constant.REMEMBER_ME, true);
         } else {
@@ -135,7 +133,7 @@ public class LoginFragment extends Fragment {
             sharedPreferences.putBoolean(Constant.REMEMBER_ME, false);
         }
 
-        if (cbAutoLogin.isChecked()){
+        if (cbAutoLogin.isChecked()) {
             sharedPreferences.putBoolean(Constant.AUTO_LOGIN, true);
         } else {
             sharedPreferences.putBoolean(Constant.AUTO_LOGIN, false);
@@ -144,12 +142,11 @@ public class LoginFragment extends Fragment {
         sharedPreferences.apply();
     }
 
-    private void login(){
+    private void login() {
         FragmentNavigation.getInstance(getContext()).replaceFragment(new HomeFragment(), R.id.fragment_content);
     }
 
-    private void initializeElements(View view)
-    {
+    private void initializeElements(View view) {
         etName = view.findViewById(R.id.editText_login_username);
         btnLogin = view.findViewById(R.id.button_login_login);
         cbAutoLogin = view.findViewById(R.id.checkbox_login_auto_login);
