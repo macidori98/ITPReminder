@@ -96,6 +96,7 @@ public class LoginFragment extends Fragment {
                     String ID = mRef.push().getKey();
                     assert ID != null;
                     mRef.child(ID).setValue(new User(ID, user));
+                    Constant.CURRENT_USER = new User(ID, etName.getText().toString());
                     login();
                 }
             }
