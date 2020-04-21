@@ -121,7 +121,7 @@ public class LoginFragment extends Fragment {
         SharedPreferences sharedPreferences = Objects.requireNonNull(getActivity()).getSharedPreferences(Constant.MY_LOGIN_DATA, MODE_PRIVATE);
         if (sharedPreferences.getBoolean(Constant.AUTO_LOGIN, false)){
             cbAutoLogin.setChecked(true);
-            login();
+            doesUserExists(etName.getText().toString());
         }
     }
 

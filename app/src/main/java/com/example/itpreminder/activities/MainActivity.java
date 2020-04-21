@@ -22,4 +22,9 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentNavigation.getInstance(this).replaceFragment(new LoginFragment(), R.id.fragment_content);
     }
+
+    @Override
+    public void onBackPressed() {
+        FragmentNavigation.getInstance(getApplicationContext()).onBackPressed(this);
+    }
 }

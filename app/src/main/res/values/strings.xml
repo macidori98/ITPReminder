@@ -23,4 +23,9 @@
     <string name="plate_number">Plate number:</string>
     <string name="date_added">Done date:</string>
     <string name="expire_date">Expire date:</string>
+
+    <!--Home page-->
+    <string name="added_cars">Added cars</string>
+    <string name="click_for_date">Click here and pick the date when the ITP was done</string>
+    <string name="added">Added</string>
 </resources>

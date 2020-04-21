@@ -1,10 +1,10 @@
 package com.example.itpreminder.model;
 
 public class Car {
-    private String id, phoneNumber, carType, plateNumber, doneDate, expireDate;
+    private String id, phoneNumber, carType, plateNumber, doneDate, expireDate, addedById;
     private int itpPeriod;
 
-    public Car(String id, String phoneNumber, String carType, String plateNumber, String doneDate, String expireDate, int itpPeriod) {
+    public Car(String id, String phoneNumber, String carType, String plateNumber, String doneDate, String expireDate, int itpPeriod, String addedById) {
         this.id = id;
         this.phoneNumber = phoneNumber;
         this.carType = carType;
@@ -12,6 +12,7 @@ public class Car {
         this.doneDate = doneDate;
         this.expireDate = expireDate;
         this.itpPeriod = itpPeriod;
+        this.addedById = addedById;
     }
 
     public String getId() {
@@ -68,5 +69,13 @@ public class Car {
 
     public void setItpPeriod(int itpPeriod) {
         this.itpPeriod = itpPeriod;
+    }
+
+    public String getAddedById() {
+        return addedById;
+    }
+
+    public void setAddedById(String addedById) {
+        this.addedById = addedById;
     }
 }
